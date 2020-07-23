@@ -84,6 +84,43 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
+  {
+    path: '/book',
+    name: 'book',
+    component: Layout,
+    redirect: '/book/create',
+    meta: {
+      title: '图书管理', icon: 'documentation', roles: ['admin', 'editor']
+    },
+    children: [
+      {
+        name: 'bookCreate',
+        path: '/book/create',
+        component: () => import('@/views/book/create'),
+        meta: {
+          title: '上传图书', icon: 'edit', roles: ['admin']
+        }
+      },
+      {
+        name: 'bookList',
+        path: '/book/list',
+        component: () => import('@/views/book/create'),
+        meta: {
+          title: '图书列表', icon: 'list', roles: ['editor']
+        }
+      },
+      {
+        name: 'bookEdit',
+        path: '/book/edit',
+        component: () => import('@/views/book/edit'),
+        hidden: true,
+        meta: {
+          title: '编辑图书', icon: 'edit', roles: ['editor'],
+          activeMenu: '/book/list'
+        }
+      }
+    ]
+  },
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
