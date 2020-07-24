@@ -20,7 +20,7 @@
       <el-row>
         <Warning />
         <el-col :span="24">
-          <!--          表单控件-->
+          <ebook-upload />
         </el-col>
         <el-col :span="24" />
       </el-row>
@@ -32,10 +32,11 @@
 <script>
 import Sticky from '../../../components/Sticky/index'
 import Warning from './Warning'
+import EbookUpload from '../../../components/EbookUpload'
 
 export default {
   components: {
-    Sticky, Warning
+    Sticky, Warning, EbookUpload
   },
   props: {
     isEdit: Boolean
